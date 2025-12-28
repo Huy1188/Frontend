@@ -6,9 +6,13 @@ type Props = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export default function CategorySlugPage({ params }: Props) {
-  const { slug } = params;
-  if (!slug) notFound();
+// export default function CategorySlugPage({ params }: Props) {
+//   const { slug } = params;
+//   if (!slug) notFound();
 
-  return <CategoryPage slug={slug} />;
+//   return <CategoryPage slug={slug} />;
+// }
+
+export default function CategorySlugPage({ params }: { params: { slug: string } }) {
+  return <div style={{ padding: 40 }}>CATEGORY OK: {params.slug}</div>;
 }

@@ -40,7 +40,7 @@ export default function EditProductPage() {
     const [file, setFile] = useState<File | null>(null);
 
     const BACKEND_URL = useMemo(() => {
-        return (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
+        return (process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
     }, []);
 
     const previewImg = useMemo(() => {

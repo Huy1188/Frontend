@@ -10,7 +10,7 @@ export default function BannerListPage() {
     const [banners, setBanners] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
 
-    const BACKEND_URL = (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
+    const BACKEND_URL = (process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
 
     const fetchBanners = async () => {
         setLoading(true);

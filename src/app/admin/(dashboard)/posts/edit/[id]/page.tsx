@@ -11,7 +11,7 @@ export default function EditPostPage() {
     const router = useRouter();
     const id = Number(params?.id);
 
-    const BACKEND_URL = (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
+    const BACKEND_URL = (process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8000/api').replace(/\/api\/?$/, '');
 
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
