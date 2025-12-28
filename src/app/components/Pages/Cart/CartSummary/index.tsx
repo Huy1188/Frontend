@@ -9,7 +9,7 @@ import Link from "next/link";
 const cx = classNames.bind(styles);
 
 export default function CartSummary() {
-  const { totalPrice } = useCart();
+  const { totalMoney  } = useCart();
 
   return (
     <div className={cx("summary")}>
@@ -17,7 +17,7 @@ export default function CartSummary() {
 
       <div className={cx("row")}>
         <span>Tạm tính</span>
-        <strong>{formatPrice(totalPrice)}</strong>
+        <strong>{formatPrice(totalMoney )}</strong>
       </div>
 
       <Link href="/checkout" className={cx("checkout")}>
