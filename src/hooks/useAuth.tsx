@@ -30,16 +30,6 @@ const refreshMe = async () => {
   }
 };
 
-
-  const refreshMe = async () => {
-    try {
-      const res = await me();
-      setUser(res.user ?? null);
-    } finally {
-      setHydrated(true);
-    }
-  };
-
   const logoutUser = async () => {
     await logout();
     setUser(null);
