@@ -31,8 +31,10 @@ export async function fetchReviewsPaged(params: { productId: number; page?: numb
 
 export async function upsertMyReview(params: { productId: number; rating: number; comment: string }) {
   return api<UpsertReviewResponse>(`/products/${params.productId}/reviews`, {
-    method: "POST",
-    body: { rating: params.rating, comment: params.comment }, // ✅ để api.ts tự stringify + set Content-Type
-    cache: "no-store",
-  });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ rating: params.rating, comment: params.comment }),
+  cache: "no-store",
+});
+
 }
