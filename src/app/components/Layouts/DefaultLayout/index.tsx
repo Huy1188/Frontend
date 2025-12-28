@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import MobileBottomNav from "../components/MobileBottomNav";
 import { CategoryMenuProvider } from "../components/CategoryMenuContext";
 import { usePathname } from 'next/navigation';
+import { Suspense } from "react";
 
 function DefaultLayout({
   children,
@@ -14,12 +15,14 @@ function DefaultLayout({
   const isAdmin = pathname.startsWith('/admin');
     return (
         <CategoryMenuProvider>
+          <Suspense fallback={null}>
             <div className="wrapper">
                 {!isAdmin && <Header />}
                 <main className="container">{children}</main>
                 {!isAdmin && <Footer />}
                 <MobileBottomNav />
             </div>
+            </Suspense>
         </CategoryMenuProvider>
     )
 }
