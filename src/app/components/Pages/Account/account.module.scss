@@ -1,0 +1,535 @@
+.wrap {
+  background: #f6f6f6;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+}
+
+.sidebar {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  height: fit-content;
+  border: 1px solid #eee;
+}
+
+.userBox {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  font-size: 44px;
+  color: #d70018;
+  line-height: 1;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hello {
+  color: #666;
+  font-size: 13px;
+}
+.name {
+  font-weight: 700;
+  font-size: 16px;
+}
+.email {
+  color: #777;
+  font-size: 13px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #222;
+
+  &:hover {
+    background: #f3f3f3;
+  }
+}
+
+.active {
+  background: #fff1f1;
+  color: #d70018;
+  font-weight: 600;
+}
+
+.logout {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #d70018;
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 0.95;
+  }
+}
+
+.content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+
+.title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 14px;
+  background: #fff;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.label {
+  color: #777;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.value {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.notText {
+  font-size: 1.3rem;
+}
+
+.hint {
+  margin: 10px 0;
+  color: #777;
+  font-size: 13px;
+
+  code {
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+}
+
+.link {
+  color: #d70018;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ====== Base: cải thiện nhẹ để mobile dễ co ====== */
+.container {
+  align-items: start; /* tránh stretch cao lố */
+}
+
+.card {
+  overflow: hidden; /* tránh text/row tràn border radius */
+}
+
+.value {
+  word-break: break-word; /* email dài không tràn */
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+
+  &:focus {
+    border-color: #d70018;
+  }
+}
+
+
+/* ====== <= 1023px: chuyển 1 cột + menu ngang ====== */
+@media (max-width: 1023px) {
+  .wrap {
+    padding: 10px 0;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 10px;
+
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sidebar {
+    padding: 12px;
+  }
+
+  .userBox {
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+
+  .avatar {
+    font-size: 38px;
+  }
+
+  /* Tabs ngang */
+  .menu {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 0 2px;
+    margin-top: 8px;
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scroll-snap-type: x mandatory; /* kéo tab “dính” */
+  }
+
+  .item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    padding: 9px 12px;
+    border: 1px solid #eee;
+    border-radius: 999px;
+    background: #fff;
+
+    scroll-snap-align: start;
+  }
+
+  .active {
+    border-color: #ffd0d6;
+    background: #fff1f1;
+  }
+
+  /* logout ẩn ở sidebar mobile */
+  .logout {
+    display: none;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  /* Row info: tăng khoảng trống label/value */
+  .row {
+    grid-template-columns: 140px 1fr;
+    gap: 10px;
+  }
+}
+
+/* ====== <= 480px: tối ưu thật sự cho điện thoại ====== */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 8px;
+    gap: 10px;
+  }
+
+  .sidebar {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .content {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .userBox {
+    gap: 10px;
+  }
+
+  .avatar {
+    font-size: 34px;
+  }
+
+  .name {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .email {
+    font-size: 12px;
+  }
+
+  /* Tabs gọn hơn */
+  .menu {
+    gap: 6px;
+  }
+
+  .item {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  /* Info rows: chuyển sang dạng stack cho dễ đọc */
+  .row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px 0;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .value {
+    font-size: 14px;
+  }
+
+  .hint {
+    font-size: 12px;
+
+    code {
+      display: inline-block;
+      margin-top: 4px;
+    }
+  }
+}
+
+
+/* ===== Orders (GearVN-like) ===== */
+.ordersWrap { display: flex; flex-direction: column; gap: 12px; }
+
+.orderBox { border: 1px solid #eee; border-radius: 10px; background: #fff; overflow: hidden; }
+
+.orderHead {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px; background: #fafafa; border-bottom: 1px solid #eee;
+}
+
+.orderCode { font-weight: 800; font-size: 14px; }
+
+.orderMeta { display: flex; align-items: center; gap: 10px; color: #666; font-size: 13px; }
+
+.badge {
+  display: inline-flex; align-items: center;
+  padding: 6px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 700;
+  border: 1px solid #eee; background: #fff;
+}
+.badgePending { border-color: #ffe7b3; background: #fff7e0; color: #a66a00; }
+.badgeShipping { border-color: #cfe8ff; background: #edf6ff; color: #0b5cab; }
+.badgeDone { border-color: #cdebd6; background: #eefaf2; color: #117a37; }
+.badgeCancel { border-color: #ffd0d6; background: #fff1f1; color: #d70018; }
+
+.orderBody { padding: 10px 14px; }
+.items { display: flex; flex-direction: column; gap: 10px; }
+
+.itemRow {
+  display: grid; grid-template-columns: 64px 1fr auto;
+  gap: 12px; align-items: center;
+  padding: 10px 0; border-bottom: 1px dashed #eee;
+}
+.itemRow:last-child { border-bottom: none; }
+
+.thumb {
+  width: 64px; height: 64px;
+  border-radius: 10px; border: 1px solid #eee;
+  object-fit: cover; background: #fff;
+}
+
+.itemInfo { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+
+.itemName {
+  font-weight: 700; font-size: 14px; line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.itemSub { color: #666; font-size: 13px; }
+
+.itemPrice { text-align: right; white-space: nowrap; font-weight: 800; font-size: 14px; }
+
+.orderFoot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px; border-top: 1px solid #eee; background: #fff;
+}
+
+.total { display: flex; flex-direction: column; gap: 2px; }
+.totalLabel { color: #666; font-size: 12px; }
+.totalValue { font-size: 16px; font-weight: 900; color: #d70018; }
+
+.actions { display: flex; align-items: center; gap: 8px; }
+
+.btnOutline {
+  border: 1px solid #ffd0d6; background: #fff; color: #d70018;
+  font-weight: 600; border-radius: 10px; padding: 10px 12px; cursor: pointer;
+}
+.btnOutline:hover { background: #fff1f1; }
+
+.btnPrimary {
+  border: none; background: #d70018; color: #fff;
+  font-weight: 600; border-radius: 10px; padding: 10px 12px; cursor: pointer;
+}
+.btnPrimary:hover { opacity: 0.95; }
+
+@media (max-width: 480px) {
+  .orderHead { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .itemRow { grid-template-columns: 56px 1fr; gap: 10px; }
+  .itemPrice { grid-column: 1 / -1; text-align: left; margin-left: calc(56px + 10px); }
+  .orderFoot { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .actions { width: 100%; }
+  .btnOutline, .btnPrimary { width: 100%; text-align: center; }
+}
+
+/* ===== Modal ===== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  z-index: 9999;
+}
+
+.modal {
+  width: min(720px, 100%);
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.modalHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+
+.modalTitle {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.modalClose {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  &:hover { background: #f3f3f3; }
+}
+
+.modalBody {
+  padding: 14px;
+
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+
+  &:last-child { border-bottom: none; }
+}
+
+.k { color: #777; font-size: 1.5rem; }
+.v { font-weight: 400; word-break: break-word; font-size: 1.5rem;}
+
+@media (max-width: 480px) {
+  .kv { grid-template-columns: 1fr; gap: 6px; }
+}
+
+
+// address
+.addressWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titleRow { display:flex; align-items: center; justify-content:space-between; gap:12px; }
+.addrList { display:flex; flex-direction:column; gap:12px; }
+.addrCard { border:1px solid #eee; border-radius:10px; padding:14px; background:#fff; }
+.addrHead { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.addrName { font-weight:700; font-size: 1.5rem; }
+.addrText { margin-top:6px; color:#555; font-size: 1.4rem;}
+.addrActions { margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; }
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 5px 0;
+  outline: none;
+  &:focus { border-color: #d70018; }
+}
+
+.btnDanger {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ffd0d6;
+  background: #fff;
+  color: #d70018;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkboxRow { display:flex; align-items:center; gap:8px; margin:8px 0; }

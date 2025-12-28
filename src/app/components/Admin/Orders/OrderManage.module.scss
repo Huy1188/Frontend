@@ -1,0 +1,192 @@
+@use 'sass:color';
+
+$primary: #4361ee;
+$bg: #f8f9fa;
+$white: #fff;
+$text: #111827;
+$muted: #6b7280;
+$border: #e5e7eb;
+
+$success: #22c55e;
+$warning: #f59e0b;
+$danger: #ef4444;
+$info: #0ea5e9;
+
+.container {
+    padding: 20px;
+    background: $bg;
+    min-height: 100vh;
+}
+
+.cardBox {
+    background: $white;
+    border: 1px solid $border;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.cardHeader {
+    padding: 18px 20px;
+    border-bottom: 1px solid $border;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: $text;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        i {
+            color: $primary;
+        }
+    }
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid $border;
+    border-radius: 10px;
+    color: $text;
+    text-decoration: none;
+    font-weight: 600;
+    background: #fff;
+
+    &:hover {
+        background: #f9fafb;
+    }
+}
+
+.tableWrapper {
+    overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 880px;
+
+    thead th {
+        text-align: left;
+        font-size: 13px;
+        font-weight: 700;
+        color: $text;
+        background: #f9fafb;
+        padding: 12px 14px;
+        border-bottom: 1px solid $border;
+        white-space: nowrap;
+    }
+
+    tbody td {
+        padding: 12px 14px;
+        border-bottom: 1px solid $border;
+        font-size: 14px;
+        color: $text;
+        vertical-align: middle;
+    }
+
+    tbody tr:hover td {
+        background: #fbfdff;
+    }
+}
+
+.customer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.customerName {
+    font-weight: 700;
+    color: $text;
+    font-size: 1.4rem;
+}
+
+.customerEmail {
+    font-size: 1.4rem;
+    color: $muted;
+    font-weight: 500;
+}
+
+.money {
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.date {
+    font-size: 13px;
+    color: $muted;
+}
+
+.actionBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid $border;
+    background: #fff;
+    color: $text;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+
+    &:hover {
+        background: #f9fafb;
+        border-color: color.scale($border, $lightness: -8%);
+    }
+
+    i {
+        color: $primary;
+    }
+}
+
+/* Badge status */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    border: 1px solid transparent;
+}
+
+/* Bạn map theo status bạn đang dùng */
+.st_pending {
+    color: $warning;
+    background: rgba($warning, 0.12);
+    border-color: rgba($warning, 0.25);
+}
+.st_processing {
+    color: $info;
+    background: rgba($info, 0.12);
+    border-color: rgba($info, 0.25);
+}
+.st_shipping {
+    color: $primary;
+    background: rgba($primary, 0.12);
+    border-color: rgba($primary, 0.25);
+}
+.st_delivered {
+    color: $success;
+    background: rgba($success, 0.12);
+    border-color: rgba($success, 0.25);
+}
+.st_cancelled {
+    color: $danger;
+    background: rgba($danger, 0.12);
+    border-color: rgba($danger, 0.25);
+}
