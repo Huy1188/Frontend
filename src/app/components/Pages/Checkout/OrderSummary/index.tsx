@@ -10,10 +10,10 @@ import { resolveImageUrl } from "@/lib/resolveImageUrl";
 const cx = classNames.bind(styles);
 
 export default function OrderSummary() {
-  const { items, totalPrice } = useCart();
+  const { items, totalMoney  } = useCart();
 
-  const shippingFee = totalPrice > 5000000 ? 0 : 30000;
-  const total = totalPrice + shippingFee;
+  const shippingFee = totalMoney  > 5000000 ? 0 : 30000;
+  const total = totalMoney  + shippingFee;
 
   return (
     <div className={cx("box")}>
@@ -46,7 +46,7 @@ export default function OrderSummary() {
       <div className={cx("rows")}>
         <div className={cx("row")}>
           <span>Tạm tính</span>
-          <strong>{formatPrice(totalPrice)}</strong>
+          <strong>{formatPrice(totalMoney )}</strong>
         </div>
         <div className={cx("row")}>
           <span>Phí vận chuyển</span>
